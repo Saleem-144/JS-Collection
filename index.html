@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM|Color Changer</title>
+</head>
+<style>
+    .box{
+        padding: 25px;
+
+        width: 10%;
+        text-align: center;
+        display:inline-flex;
+        border: solid white;
+        cursor: pointer;
+        user-select: none;
+
+    }
+    h1{
+        text-align: center;
+    }
+    p{
+        text-align: center;
+    }
+    .bulb{
+        border-radius:100%;
+        width: 3em;
+        height: 3em;
+        margin: auto;
+        text-align: center;
+        border:solid orange;
+        align-items: center;
+        }
+</style>
+<body class="body" style="background-color: #212121; color: #fff;">
+    <h1>Color Changer</h1>
+    <div class="bulb" style="color: white;"><b>OFF</b></div>
+    <p>Click to change the background and press again for default color </p>
+    <div class="box" id="red" style="background-color: red; color: black;">RED</div>
+    <div class="box" id="yellow" style="background-color: yellow; color: black">YELLOW</div>
+    <div class="box" id="green" style="background-color: green; color: black">GREEN</div>
+    <div class="box" id="blue" style="background-color: blue;  color: black ">BLUE</div>
+</body>
+<script>
+    const box = document.querySelectorAll(".box")
+    const body = document.querySelector(".body")
+    const bulb = document.querySelector(".bulb")
+    default_color = ""
+    box.forEach(element => {
+        element.addEventListener("click",(e)=>{
+            if(default_color === e.target.id){
+            body.style.backgroundColor = "#212121";
+            bulb.textContent = 'OFF'
+            bulb.style.backgroundColor="#212121";
+            default_color="";
+            }
+        else{
+            body.style.backgroundColor = e.target.id
+            bulb.style.backgroundColor = "orange"
+            bulb.textContent='ON'
+            default_color = e.target.id
+        }
+    });
+});
+</script>
+</html>
